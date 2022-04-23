@@ -2,6 +2,7 @@ package com.store.product.service;
 
 import java.util.List;
 
+import com.store.product.entity.Category;
 import com.store.product.entity.Product;
 
 public interface IProductService {
@@ -15,5 +16,7 @@ public interface IProductService {
 	public Product updateProduct(Product product);
 
 	public Product deleteProduct(Long id);
+
+	public List<Product> findByCategory(Category category);
 
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.store.product.entity.Category;
 import com.store.product.entity.Product;
 import com.store.product.repository.IProductRepository;
 
@@ -60,6 +61,12 @@ public class ProductServiceImpl implements IProductService {
 		}
 
 		return null;
+	}
+
+	@Override
+	public List<Product> findByCategory(Category category) {
+
+		return repo.findByCategory(category);
 	}
 
 }
