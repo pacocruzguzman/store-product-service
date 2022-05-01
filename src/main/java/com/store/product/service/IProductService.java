@@ -7,16 +7,16 @@ import com.store.product.entity.Product;
 
 public interface IProductService {
 
-	public List<Product> listAllProduct();
+	List<Product> listAllProduct();
 
-	public Product getProduct(Long id);
+	Product getProduct(Long id);
 
-	public Product creatdProduct(Product product);
+	Product creatdProduct(Product product);
 
-	public Product updateProduct(Product product);
+	Product updateProduct(Product product);
 
-	public Product deleteProduct(Long id);
+	Product deleteProduct(Long id);
 
-	public List<Product> findByCategory(Category category);
+	List<Product> findByCategory(Category category);
 
 }

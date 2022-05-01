@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,7 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @RestController
-@RequestMapping(path = "store/products")
+@RequestMapping(path = "${path-service}")
 public class ProductController {
 
 	@Autowired
@@ -36,7 +37,7 @@ public class ProductController {
 
 			Category category = new Category();
 			category.setId(categoryId);
-			
+
 			log.info(categoryId);
 
 			listProducts = service.findByCategory(category);
@@ -48,6 +49,18 @@ public class ProductController {
 			listProducts = service.listAllProduct();
 		}
 		return new ResponseEntity<>(listProducts, HttpStatus.OK);
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Product> getProduct(@PathVariable(name = "id") Long id) {
+
+		Product p = service.getProduct(id);
+
+		if (p != null)
+			return new ResponseEntity<>(p, HttpStatus.OK);
+		else
+			return ResponseEntity.noContent().build();
+
 	}
 
 	@PostMapping
