@@ -34,11 +34,7 @@ public class ProductServiceImpl implements IProductService {
 	@Override
 	public Product findProduct(String sku) {
 
-		log.debug("DEBUG");
-		log.info("INFO");
-		log.warn("WARM");
-		log.error("ERROR");
-		
+		log.info("sku: {}", sku);
 		
 		return productRepository.findById(sku).orElse(null);
 	}
@@ -47,6 +43,8 @@ public class ProductServiceImpl implements IProductService {
 	public Product registerProduct(Product product) {
 
 		Product productBD = findProduct(product.getSku());
+		
+		log.info("productoDB: {}", productBD);
 
 		if (productBD != null) {
 
