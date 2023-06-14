@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: store-product-service-DEV
+  config:
+    name: ${spring.application.name}
